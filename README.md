@@ -28,14 +28,14 @@ The worker automatically subscribes to:
 └── .env.example            # Sample configuration file
 ```
 
-# 1. Publish a test message to Kafka via the Nginx reverse-proxied server domain
-echo '{"boat_id": "blueboat-01", "heading": 142.5, "speed_knots": 3.8, "battery_pct": 94}' | \
-  docker exec -i terra-kafka-broker /opt/kafka/bin/kafka-console-producer.sh \
-    --bootstrap-server <your-server-domain>:9094 \
-    --topic usv.telemetry
+### 1. Publish a test message to Kafka via the Nginx reverse-proxied server domain
+    echo '{"boat_id": "blueboat-01", "heading": 142.5, "speed_knots": 3.8, "battery_pct": 94}' | \
+      docker exec -i terra-kafka-broker /opt/kafka/bin/kafka-console-producer.sh \
+        --bootstrap-server <your-server-domain>:9094 \
+        --topic usv.telemetry
 
-# 2. Check the worker container logs to verify message ingestion
-docker logs terra-kafka-worker --tail 10
+### 2. Check the worker container logs to verify message ingestion
+    docker logs terra-kafka-worker --tail 10
 
-# 3. Query the remote/host MongoDB to confirm persistence
-docker exec -i terra-mongo mongosh "$MONGO_URI" --eval 'db.telemetry.find().sort({_id: -1}).limit(1).pretty()'
+### 3. Query the remote/host MongoDB to confirm persistence
+    docker exec -i terra-mongo mongosh "$MONGO_URI" --eval 'db.telemetry.find().sort({_id: -1}).limit(1).pretty()'
