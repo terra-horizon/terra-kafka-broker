@@ -28,10 +28,10 @@ The worker automatically subscribes to:
 └── .env.example            # Sample configuration file
 ```
 
-### 1. Publish a test message to Kafka via the Nginx reverse-proxied server domain
+### 1. Publish a test message to Kafka 
     echo '{"boat_id": "blueboat-01", "heading": 142.5, "speed_knots": 3.8, "battery_pct": 94}' | \
       docker exec -i terra-kafka-broker /opt/kafka/bin/kafka-console-producer.sh \
-        --bootstrap-server <your-server-domain>:9094 \
+        --bootstrap-server <server-domain>:9094 \
         --topic usv.telemetry
 
 ### 2. Check the worker container logs to verify message ingestion
