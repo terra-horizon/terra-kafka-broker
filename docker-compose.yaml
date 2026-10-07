@@ -1,5 +1,7 @@
 services:
   kafka:
+    labels:
+     io.portainer.accesscontrol.teams: terra-team
     image: apache/kafka:4.2.2
     container_name: terra-kafka-broker
     restart: unless-stopped
