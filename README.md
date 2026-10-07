@@ -37,5 +37,5 @@ The worker automatically subscribes to:
 ### 2. Check the worker container logs to verify message ingestion
     docker logs terra-kafka-worker --tail 10
 
-### 3. Query the remote/host MongoDB to confirm persistence
+### 3. Query MongoDB to confirm persistence
     docker exec -i terra-mongo mongosh "$MONGO_URI" --eval 'db.telemetry.find().sort({_id: -1}).limit(1).pretty()'
