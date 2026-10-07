@@ -25,7 +25,6 @@ The worker automatically subscribes to:
 ├── .dockerignore           # Prevents secrets (.env) from leaking into Docker images
 ├── docker-compose.yaml     # Portainer / Docker Compose orchestration
 ├── worker.py               # Kafka consumer and MongoDB ingestion script
-└── .env.example            # Sample configuration file
 ```
 
 ### 1. Publish a test message to Kafka 
