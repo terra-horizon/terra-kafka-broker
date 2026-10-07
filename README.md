@@ -31,7 +31,7 @@ The worker automatically subscribes to:
 ### 1. Publish a test message to Kafka 
     echo '{"id": "2026-07-23T16:15:31.376913+00:00", "gps": {"latitude": 38.8630954, "longitude": 22.5033712, "altitude": 1.88}, "environment": {"temperature": 30.9465942383, "ph": 13.09000015258789, "tds": 939.3574062, "ec": 30.3572656, "turbidity": 1972.3758828125}}' | \
       docker exec -i terra-kafka-broker /opt/kafka/bin/kafka-console-producer.sh \
-    --bootstrap-server <your-server-domain>:9094 \
+    --bootstrap-server <server-name>:9094 \
     --topic environmental.data
 
 ### 2. Check the worker container logs to verify message ingestion
