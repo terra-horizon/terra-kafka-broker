@@ -48,6 +48,7 @@ services:
     labels:
       io.portainer.accesscontrol.teams: terra-team
     environment:
+      MONGO_URI: ${MONGO_URI}
       KAFKA_BROKER: kafka:9092
       KAFKA_GROUP_ID: terra-mongodb-worker
       MONGO_COLLECTION: usv_raw_data
