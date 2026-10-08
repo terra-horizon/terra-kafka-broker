@@ -57,6 +57,9 @@ services:
 volumes:
   kafka_data:
 
-#networks:
-#  terra-net:
-#    driver: bridge
+networks:
+ default:
+   name: terra-network
+   external: false
+   labels:
+     io.portainer.accesscontrol.teams: terra-team
