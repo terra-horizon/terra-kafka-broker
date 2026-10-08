@@ -28,12 +28,12 @@ The worker automatically subscribes to:
 ```
 
 ### 1. Publish a test message to Kafka 
-    curl -X POST \
+    curl -k -X POST \
     -H "Content-Type: application/vnd.kafka.json.v2+json" \
     -H "Accept: application/vnd.kafka.v2+json" \
     --data '{"records":[{"value":{"latitude":38.2466,"longitude":21.7346}}]}' \
-    https://server.iprism.eu/kafka/topics/gps_data
-
+    https://server.iprism.eu/terra/kafka-broker/topics/gps_data
+  
 ### 2. Check the worker container logs to verify message ingestion
     docker logs terra-kafka-worker --tail 10
 
