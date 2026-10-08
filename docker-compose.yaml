@@ -5,6 +5,8 @@ services:
     image: apache/kafka:latest
     container_name: terra-kafka-broker
     restart: unless-stopped
+    labels:
+      io.portainer.accesscontrol.teams: terra-team
     environment:
       KAFKA_NODE_ID: 1
       KAFKA_PROCESS_ROLES: 'broker,controller'
