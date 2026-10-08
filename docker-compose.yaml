@@ -29,6 +29,8 @@ services:
     image: confluentinc/cp-kafka-rest:7.6.0
     container_name: terra-kafka-rest
     restart: unless-stopped
+    labels:
+      io.portainer.accesscontrol.teams: terra-team
     depends_on:
       - kafka
     ports:
@@ -43,6 +45,8 @@ services:
     image: losandriana/terra-kafka-worker:latest
     container_name: terra-kafka-worker
     restart: unless-stopped
+    labels:
+      io.portainer.accesscontrol.teams: terra-team
     environment:
       KAFKA_BROKER: kafka:9092
       KAFKA_GROUP_ID: terra-mongodb-worker
