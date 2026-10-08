@@ -24,8 +24,6 @@ services:
       KAFKA_NUM_PARTITIONS: 3
     volumes:
       - kafka_data:/var/lib/kafka/data
-    networks:
-      - terra-net
 
   kafka-rest:
     image: confluentinc/cp-kafka-rest:7.6.0
@@ -40,8 +38,6 @@ services:
       KAFKA_REST_BOOTSTRAP_SERVERS: 'kafka:9092'
       KAFKA_REST_LISTENERS: 'http://0.0.0.0:8082'
       KAFKAREST_HEAP_OPTS: "-Xmx256M -Xms128M"
-    networks:
-      - terra-net
 
   worker:
     image: losandriana/terra-kafka-worker:latest
@@ -54,8 +50,6 @@ services:
       TERRA_STORAGE_ENABLED: "true"
     depends_on:
       - kafka
-    networks:
-      - terra-net
 
 volumes:
   kafka_data:
