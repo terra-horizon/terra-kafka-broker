@@ -27,15 +27,10 @@ The worker automatically subscribes to:
 ├── worker.py               # Kafka consumer and MongoDB ingestion script
 ```
 
-### 1. Publish a test message to Kafka 
+### Publish a test message to Kafka 
     curl -k -X POST \
     -H "Content-Type: application/vnd.kafka.json.v2+json" \
     -H "Accept: application/vnd.kafka.v2+json" \
     --data '{"records":[{"value":{"latitude":38.2466,"longitude":21.7346}}]}' \
     https://server.iprism.eu/terra/kafka-broker/topics/gps_data
   
-### 2. Check the worker container logs to verify message ingestion
-    docker logs terra-kafka-worker --tail 10
-
-### 3. Query MongoDB to confirm persistence
-    docker exec -i terra-mongo mongosh "$MONGO_URI" --eval 'db.telemetry.find().sort({_id: -1}).limit(1).pretty()'
