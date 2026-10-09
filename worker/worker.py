@@ -34,7 +34,7 @@ class StorageSettings:
         # Extract database name directly from the URI path: /dbname -> dbname
         parsed = urlparse(self.mongo_uri)
         path_db = parsed.path.lstrip("/").split("?")[0]
-        self.mongo_database = path_db if path_db else os.getenv("MONGO_DATABASE", "usv_raw_data")
+        self.mongo_database = path_db if path_db else os.getenv("MONGO_DATABASE", "terra-db")
         
         # Hide credentials for clean console logging (only prints host:port)
         if "@" in parsed.netloc:
