@@ -34,7 +34,7 @@ class StorageSettings:
         # Extract database name directly from the URI path: /dbname -> dbname
         parsed = urlparse(self.mongo_uri)
         path_db = parsed.path.lstrip("/").split("?")[0]
-        self.mongo_database = path_db if path_db else os.getenv("MONGO_DATABASE", "terra")
+        self.mongo_database = path_db if path_db else os.getenv("MONGO_DATABASE", "usv_raw_data")
         
         # Hide credentials for clean console logging (only prints host:port)
         if "@" in parsed.netloc:
@@ -59,7 +59,7 @@ TOPICS = [
 
 KAFKA_BROKER = os.getenv("KAFKA_BROKER", "kafka:9092")
 KAFKA_GROUP_ID = os.getenv("KAFKA_GROUP_ID", "terra-mongodb-worker")
-MONGO_COLLECTION = os.getenv("MONGO_COLLECTION", "telemetry")
+MONGO_COLLECTION = os.getenv("MONGO_COLLECTION", "usv_raw_data")
 
 running = True
 
